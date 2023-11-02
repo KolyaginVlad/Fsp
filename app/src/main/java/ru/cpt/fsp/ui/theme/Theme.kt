@@ -1,42 +1,29 @@
 package ru.cpt.fsp.ui.theme
 
-import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.material.Colors
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material.darkColors
 import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
-
-private val DarkColorPalette = darkColors(
-    primary = Purple200,
-    primaryVariant = Purple700,
-    secondary = Teal200
-)
+import androidx.compose.ui.graphics.Color
 
 private val LightColorPalette = lightColors(
-    primary = Purple500,
-    primaryVariant = Purple700,
-    secondary = Teal200
-
-    /* Other default colors to override
-    background = Color.White,
-    surface = Color.White,
-    onPrimary = Color.White,
-    onSecondary = Color.Black,
-    onBackground = Color.Black,
-    onSurface = Color.Black,
-    */
+    primary = Primary,
+    primaryVariant = PrimaryVariant,
+    secondary = Secondary,
+    secondaryVariant = SecondaryVariant,
+    background = Background,
+    surface = Surface,
+    onPrimary = OnPrimary,
+    onSecondary = OnSecondary,
+    onBackground = OnBackground,
+    onSurface = OnSurface,
 )
 
 @Composable
 fun FspTheme(
-    darkTheme: Boolean = isSystemInDarkTheme(),
-    content: @Composable () -> Unit
+    content: @Composable () -> Unit,
 ) {
-    val colors = if (darkTheme) {
-        DarkColorPalette
-    } else {
-        LightColorPalette
-    }
+    val colors = LightColorPalette
 
     MaterialTheme(
         colors = colors,
@@ -45,3 +32,21 @@ fun FspTheme(
         content = content
     )
 }
+
+val Colors.onPrimaryHighEmphasis: Color
+    get() = onPrimary.copy(alpha = onPrimaryHighEmphasisAlfa)
+
+val Colors.onPrimaryMediumEmphasis: Color
+    get() = onPrimary.copy(alpha = onPrimaryMediumEmphasisAlfa)
+
+val Colors.onPrimaryLowEmphasis: Color
+    get() = onPrimary.copy(alpha = onPrimaryLowEmphasisAlfa)
+
+val Colors.onSurfaceHighEmphasis: Color
+    get() = onSurface.copy(alpha = onSurfaceHighEmphasisAlfa)
+
+val Colors.onSurfaceMediumEmphasis: Color
+    get() = onSurface.copy(alpha = onSurfaceMediumEmphasisAlfa)
+
+val Colors.onSurfaceLowEmphasis: Color
+    get() = onSurface.copy(alpha = onSurfaceLowEmphasisAlfa)
